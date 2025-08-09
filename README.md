@@ -1,4 +1,4 @@
-# 📚 ForHub
+# 📚 Forum-Hub
 
 Aplicação Java Spring Boot usando apenas back-end, com autenticação JWT, para gerenciamento de perfis, usuários, cursos, tópicos e respostas.  
 O sistema implementa controle de acesso baseado em perfis (ex.: **admin**, **user**) e segue arquitetura em camadas, garantindo segurança e organização no código.
