@@ -26,7 +26,7 @@ O sistema implementa controle de acesso baseado em perfis (ex.: **admin**, **use
 
 - **Usuários**
   - Cadastrar usuário vinculado a um perfil
-  - Listar usuários (necessário login e token JWT)
+  - Listar usuários
   - Ativar/Desativar usuário
 
 - **Autenticação**
