@@ -16,10 +16,11 @@ O sistema implementa controle de acesso baseado em perfis (ex.: **admin**, **use
 
 ## ✨ Funcionalidades
 
--**Observações**
--Após cadastrar perfil com permissões definidas
+**Observações**
+- Após cadastrar perfil com permissões definidas
 - Cadastrar usuário vinculado a um perfil
-- Todas as demais funcionalidades da aplicação só funcionara se você for na autenticação inserir email e senha corretos do cadastro do usuario existente no banco e será retornado um token para ser inserido nas demais funcionalidades para ter acesso as informações.
+- Todas as demais funcionalidades da aplicação só funcionará se você for na autenticação inserir email e senha corretos do cadastro do usuario existente no banco e será retornado um token para ser inserido nas demais funcionalidades para ter acesso as informações.
+
 
 - **Perfis**
   - Cadastrar perfil com permissões definidas
