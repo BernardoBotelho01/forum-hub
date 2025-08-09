@@ -1,5 +1,6 @@
-package br.com.alura.forum_hub.security;
+package br.com.alura.forum_hub.config;
 
+import br.com.alura.forum_hub.security.SecurityFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,12 +32,15 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
                         .requestMatchers(HttpMethod.POST, "/usuarios/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/cursos").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/cursos").authenticated()
                         .requestMatchers(HttpMethod.POST, "/topicos").authenticated()
                         .requestMatchers(HttpMethod.GET, "/topicos").authenticated()
                         .requestMatchers(HttpMethod.PUT, "/topicos/atualizar/**").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/topicos/**").authenticated()
                         .requestMatchers(HttpMethod.PUT, "/topicos/**").authenticated()
                         .requestMatchers(HttpMethod.GET, "/topicos/**").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/respostas").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/respostas").authenticated()
 
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

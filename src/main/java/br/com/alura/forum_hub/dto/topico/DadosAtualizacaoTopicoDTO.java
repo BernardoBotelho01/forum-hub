@@ -6,10 +6,8 @@ import jakarta.validation.constraints.NotNull;
 public record DadosAtualizacaoTopicoDTO(
 
         long id,
-        String titulo,
+        String categoria,
         String mensagem,
-        String status,
-        String autor,
-        String curso
+        String status
 ) {
 }

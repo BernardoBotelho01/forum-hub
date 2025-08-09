@@ -32,10 +32,10 @@ public class TopicoController {
         var autor = usuarioRepository.findByNome(dados.nomeAutor())
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado!"));
 
-        var curso = cursoRepository.findByNome(dados.nomeCurso())
+        var curso = cursoRepository.findByNomeIgnoreCase(dados.nomeCurso())
                 .orElseThrow(() -> new RuntimeException("Curso não encontrado!"));
 
-        var topico = new Topico(dados.titulo(), dados.mensagem(), autor, curso);
+        var topico = new Topico(dados.categoria(), dados.mensagem(), autor, curso);
 
         var topicoSalvo = topicoService.salvarTopico(topico);
 

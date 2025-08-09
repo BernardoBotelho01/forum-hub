@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public record DadosListagemTopicosDTO(
 
         Long id,
-        String titulo,
+        String categoria,
         String mensagem,
         String datacriacao,
         String status,
@@ -19,7 +19,7 @@ public record DadosListagemTopicosDTO(
     public DadosListagemTopicosDTO(Topico dados) {
         this(
                 dados.getId(),
-                dados.getTitulo(),
+                dados.getCurso().getCategoria(),
                 dados.getMensagem(),
                 dados.getDataCriacao().toString(),
                 dados.getStatus(),

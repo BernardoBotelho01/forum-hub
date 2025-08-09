@@ -4,7 +4,8 @@ import br.com.alura.forum_hub.model.Resposta;
 
 import java.time.LocalDateTime;
 
-public record RespostaDTO(
+public record DadosListagemRespostaDTO(
+        long id,
         String mensagem,
         String topico,
         LocalDateTime dataCriacao,
@@ -12,9 +13,10 @@ public record RespostaDTO(
         String solucao
 ) {
 
-    public RespostaDTO(Resposta dados) {
+    public DadosListagemRespostaDTO(Resposta dados) {
 
         this(
+                dados.getId(),
                 dados.getMensagem(),
                 dados.getTopico().getCurso().getNome(),
                 dados.getDataCriacao(),

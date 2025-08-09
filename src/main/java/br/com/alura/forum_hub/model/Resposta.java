@@ -1,13 +1,10 @@
 package br.com.alura.forum_hub.model;
 
-import br.com.alura.forum_hub.dto.resposta.DadosRespostaDTO;
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "respostas")
@@ -34,16 +31,18 @@ public class Resposta{
 
     @ManyToOne
     @JoinColumn(name = "autor_id", nullable = false)
-    private Usuario autor;
+    public Usuario autor;
 
     @Column(nullable = false)
-    private String solucao;
+    private String solucao = "";
 
-    public Resposta(@Valid DadosRespostaDTO dados) {
-        this.mensagem = dados.mensagem();
-        this.topico = dados.topico();
-        this.dataCriacao = getDataCriacao();
-        this.autor = dados.autor();
-        this.solucao = dados.solucao();
+
+    public Resposta(String mensagem, Topico topico, Usuario autor, String solucao) {
+        this.mensagem = mensagem;
+        this.topico = topico;
+        this.dataCriacao = LocalDateTime.now();
+        this.autor = autor;
+        this.solucao = solucao;
     }
+
 }

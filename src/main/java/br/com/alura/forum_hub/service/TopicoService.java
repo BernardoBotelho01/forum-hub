@@ -3,6 +3,7 @@ package br.com.alura.forum_hub.service;
 import br.com.alura.forum_hub.dto.topico.DadosAtualizacaoTopicoDTO;
 import br.com.alura.forum_hub.dto.topico.DadosListagemTopicosDTO;
 import br.com.alura.forum_hub.model.Topico;
+import br.com.alura.forum_hub.repository.CursoRepository;
 import br.com.alura.forum_hub.repository.TopicoRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -18,6 +19,7 @@ import java.util.Optional;
 public class TopicoService {
 
     private final TopicoRepository repository;
+    private final CursoRepository cursoRepository;
 
     @Transactional
     public Topico salvarTopico (Topico topico){
@@ -36,19 +38,18 @@ public class TopicoService {
     }
 
     @Transactional
-    public Topico atualizar(Long id, DadosAtualizacaoTopicoDTO dados){
+    public Topico atualizar(Long id, DadosAtualizacaoTopicoDTO dados) {
+        return repository.findById(id)
+                .map(topico -> {
+                    topico.atualizarInformacoes(dados);
 
-        Optional<Topico> topicoOptional = repository.findById(id);
+                    if (dados.categoria() != null && !dados.categoria().isBlank()) {
+                        topico.getCurso().setCategoria(dados.categoria().trim());
+                    }
 
-        if (topicoOptional.isPresent()){
-            Topico topico = topicoOptional.get();
-            topico.atualizarInformacoes(dados);
-            return topico;
-        }
-        else {
-            throw new EntityNotFoundException("Id não encontrado para fazer atualização do topico");
-        }
-
+                    return topico;
+                })
+                .orElseThrow(() -> new EntityNotFoundException("Id não encontrado para fazer atualização do tópico"));
     }
 
     public void desativar(Long id) {
