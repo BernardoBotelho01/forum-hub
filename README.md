@@ -61,39 +61,41 @@ O sistema implementa controle de acesso baseado em perfis (ex.: **admin**, **use
 - **Postman** para testes
 
 ## 🖥️ Exemplo de Execução
+**Observação**
+- todos os dados inseridos nas imagens são para fins de exemplos
 
 **Cadastro de Perfil:**
-![](imagens/cadastro-usuario.png)
+![](Imagens-Forum/cadastro-perfil.png)
 
 ---
 
 **Cadastro de Usuário:**
-![](imagens/cadastro-usuario.png)
+![](Imagens-Forum/cadastro-usuario.png)
 
 ---
 
 **Autenticação:**
-![](imagens/cadastro-usuario.png)
+![](Imagens-Forum/autenticacao.png)
 
 ---
 
 **Listagem de Usuários (com token JWT):**
-![](imagens/lista-usuarios.png)
+![](Imagens-Forum/listagem-usuarios.png)
 
 ---
 
 **Cadastro de Curso:**
-![](imagens/cadastro-curso.png)
+![](Imagens-Forum/cadastrar-curso.png)
 
 ---
 
 **Cadastro de Tópico:**
-![](imagens/cadastro-topico.png)
+![](Imagens-Forum/cadastrar-topico.png)
 
 ---
 
 **Cadastro de Resposta:**
-![](imagens/cadastro-resposta.png)
+![](Imagens-Forum/cadastro-respostas.png)
 
 ## 👨🏻‍💻 Autor
 
