@@ -72,6 +72,11 @@ O sistema implementa controle de acesso baseado em perfis (ex.: **admin**, **use
 
 ---
 
+**Autenticação:**
+![](imagens/cadastro-usuario.png)
+
+---
+
 **Listagem de Usuários (com token JWT):**
 ![](imagens/lista-usuarios.png)
 
