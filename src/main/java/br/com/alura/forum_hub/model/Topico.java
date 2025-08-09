@@ -1,8 +1,8 @@
 package br.com.alura.forum_hub.model;
 
-import br.com.alura.forum_hub.dto.DadosTopicosDTO;
+import br.com.alura.forum_hub.dto.topico.DadosAtualizacaoTopicoDTO;
+import br.com.alura.forum_hub.dto.topico.DadosTopicosDTO;
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -27,8 +27,9 @@ public class Topico {
     private String mensagem;
     @Column(nullable = false)
     private LocalDateTime dataCriacao = LocalDateTime.now();
-    @Column(nullable = false)
-    private boolean status;
+
+    private String status;
+    private Boolean ativo;
 
     @ManyToOne
     @JoinColumn(name = "autor_id", nullable = false)
@@ -42,10 +43,34 @@ public class Topico {
     private List<Resposta> respostas = new ArrayList<>();
 
 
-    public Topico(DadosTopicosDTO dados) {
-        this.titulo = dados.titulo();
-        this.mensagem = dados.mensagem();
-        this.autor = dados.autor();
-        this.curso = dados.curso();
+    public Topico(String titulo, String mensagem, Usuario autor, Curso curso) {
+        this.ativo = true;
+        this.titulo = titulo;
+        this.mensagem = mensagem;
+        this.dataCriacao = LocalDateTime.now();
+        this.autor = autor;
+        this.curso = curso;
+        this.status = "Aberto";
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoTopicoDTO dados) {
+        if (dados.titulo() != null ){
+            this.titulo = dados.titulo();
+        }
+        if (dados.mensagem() != null){
+            this.mensagem = dados.mensagem();
+        }
+        if (dados.status() != null){
+            this.status = dados.status();
+        }
+
+    }
+
+    public void desativarTopico() {
+        this.ativo = false;
+    }
+
+    public void ativarTopico() {
+        this.ativo = true;
     }
 }

@@ -1,4 +1,4 @@
-package br.com.alura.forum_hub.dto;
+package br.com.alura.forum_hub.dto.perfil;
 
 import jakarta.validation.constraints.NotBlank;
 

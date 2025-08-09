@@ -1,4 +1,4 @@
-package br.com.alura.forum_hub.dto;
+package br.com.alura.forum_hub.dto.resposta;
 
 import br.com.alura.forum_hub.model.Topico;
 import br.com.alura.forum_hub.model.Usuario;
@@ -16,7 +16,7 @@ public record DadosRespostaDTO(
         @NotNull
         LocalDateTime dataCriacao,
         @NotNull
-        Usuario ator,
+        Usuario autor,
         @NotBlank
         String solucao
 ) {

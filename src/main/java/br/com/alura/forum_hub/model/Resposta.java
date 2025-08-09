@@ -1,6 +1,8 @@
 package br.com.alura.forum_hub.model;
 
+import br.com.alura.forum_hub.dto.resposta.DadosRespostaDTO;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -36,4 +38,12 @@ public class Resposta{
 
     @Column(nullable = false)
     private String solucao;
+
+    public Resposta(@Valid DadosRespostaDTO dados) {
+        this.mensagem = dados.mensagem();
+        this.topico = dados.topico();
+        this.dataCriacao = getDataCriacao();
+        this.autor = dados.autor();
+        this.solucao = dados.solucao();
+    }
 }

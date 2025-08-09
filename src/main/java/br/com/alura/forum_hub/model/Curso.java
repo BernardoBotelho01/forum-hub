@@ -1,6 +1,8 @@
 package br.com.alura.forum_hub.model;
 
+import br.com.alura.forum_hub.dto.curso.DadosCursoDTO;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.*;
 
 @Entity
@@ -19,4 +21,9 @@ public class Curso {
     private String nome;
     @Column(nullable = false)
     private String categoria;
+
+    public Curso(@Valid DadosCursoDTO dados) {
+        this.nome = dados.nome();
+        this.categoria = dados.categoria();
+    }
 }
