@@ -1,10 +1,7 @@
 package br.com.alura.forum_hub.dto.topico;
 
-import br.com.alura.forum_hub.dto.autor.AutorDTO;
-import br.com.alura.forum_hub.model.Curso;
 import br.com.alura.forum_hub.model.Topico;
-
-import java.time.LocalDateTime;
+import br.com.alura.forum_hub.model.Usuario;
 
 public record DadosListagemTopicosDTO(
 

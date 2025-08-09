@@ -14,7 +14,5 @@ public interface TopicoRepository extends JpaRepository<Topico, Long> {
 
     Page<Topico> findAllByAtivoTrue(Pageable paginacao);
 
-    Optional<Topico> findFirstByCurso_Nome(String nome);
-
     Optional<Topico> findFirstByCursoOrderByIdDesc(Curso curso);
 }

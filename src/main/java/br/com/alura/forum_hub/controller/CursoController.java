@@ -1,9 +1,7 @@
 package br.com.alura.forum_hub.controller;
 
-import br.com.alura.forum_hub.dto.curso.CursoDTO;
 import br.com.alura.forum_hub.dto.curso.DadosCursoDTO;
 import br.com.alura.forum_hub.dto.curso.DadosListagemCursoDTO;
-import br.com.alura.forum_hub.dto.resposta.DadosListagemRespostaDTO;
 import br.com.alura.forum_hub.model.Curso;
 import br.com.alura.forum_hub.service.CursoService;
 import jakarta.validation.Valid;

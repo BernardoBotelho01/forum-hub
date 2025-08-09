@@ -1,7 +1,6 @@
 package br.com.alura.forum_hub.model;
 
 import br.com.alura.forum_hub.dto.topico.DadosAtualizacaoTopicoDTO;
-import br.com.alura.forum_hub.dto.topico.DadosTopicosDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,7 +15,7 @@ import java.util.List;
 @EqualsAndHashCode(of = "id")
 @Getter
 @Setter
-public class Topico {
+public class Topico implements AtivarEDesativarUsuario{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,11 +62,14 @@ public class Topico {
 
     }
 
-    public void desativarTopico() {
-        this.ativo = false;
+
+    @Override
+    public Boolean ativar() {
+        return this.ativo = true;
     }
 
-    public void ativarTopico() {
-        this.ativo = true;
+    @Override
+    public Boolean desativar() {
+        return this.ativo = false;
     }
 }

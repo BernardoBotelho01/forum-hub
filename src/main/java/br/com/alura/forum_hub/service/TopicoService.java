@@ -51,13 +51,13 @@ public class TopicoService {
                 })
                 .orElseThrow(() -> new EntityNotFoundException("Id não encontrado para fazer atualização do tópico"));
     }
-
+@Transactional
     public void desativar(Long id) {
         Optional<Topico> topicoOptional = repository.findById(id);
 
         if (topicoOptional.isPresent()){
             Topico topico = topicoOptional.get();
-            topico.desativarTopico();
+            topico.desativar();
             repository.save(topico);
         }else{
             throw new EntityNotFoundException("Id não encontrado para ser desativado");
@@ -68,6 +68,6 @@ public class TopicoService {
     @Transactional
     public void ativar(Long id) {
         var topico = repository.getReferenceById(id);
-        topico.ativarTopico();
+        topico.ativar();
     }
 }

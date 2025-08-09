@@ -15,7 +15,7 @@ import java.util.*;
 @EqualsAndHashCode(of = "id")
 @Getter
 @Setter
-public class Usuario implements UserDetails {
+public class Usuario implements UserDetails, AtivarEDesativarUsuario{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +33,8 @@ public class Usuario implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "perfil_id")
     )
     private Set<Perfil> perfis = new HashSet<>();
+
+    private Boolean ativo = true;
 
     public Usuario(DadosUsuarioDTO dados) {
         this.nome = dados.nome();
@@ -73,5 +75,15 @@ public class Usuario implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public Boolean ativar() {
+        return this.ativo = true;
+    }
+
+    @Override
+    public Boolean desativar() {
+        return this.ativo = false;
     }
 }

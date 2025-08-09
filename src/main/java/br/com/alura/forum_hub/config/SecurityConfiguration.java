@@ -30,6 +30,9 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/perfis").permitAll()
                         .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/usuarios").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/usuarios/**").authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/usuarios/**").authenticated()
                         .requestMatchers(HttpMethod.POST, "/usuarios/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/cursos").authenticated()
                         .requestMatchers(HttpMethod.GET, "/cursos").authenticated()

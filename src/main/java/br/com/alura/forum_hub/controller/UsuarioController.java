@@ -1,5 +1,6 @@
 package br.com.alura.forum_hub.controller;
 
+import br.com.alura.forum_hub.dto.usuario.DadosListagemUsuariosDTO;
 import br.com.alura.forum_hub.dto.usuario.DadosLoginUsuarioDTO;
 import br.com.alura.forum_hub.dto.usuario.DadosUsuarioDTO;
 import br.com.alura.forum_hub.dto.usuario.UsuarioDTO;
@@ -9,10 +10,16 @@ import br.com.alura.forum_hub.security.TokenService;
 import br.com.alura.forum_hub.service.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -39,5 +46,23 @@ public class UsuarioController {
 
         var tokenJWT = tokenService.gerarToken((Usuario) autenticacao.getPrincipal());
         return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity desativarTopico(@PathVariable Long id) {
+        usuarioService.desativar(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity ativarTopico(@PathVariable Long id) {
+        usuarioService.ativar(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<DadosListagemUsuariosDTO>> listagemDeTopicos(@PageableDefault(size = 10, sort = {"id"}) Pageable paginacao) {
+        return ResponseEntity.ok(usuarioService.listar(paginacao));
+
     }
 }
