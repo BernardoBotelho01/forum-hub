@@ -65,7 +65,7 @@ O sistema implementa controle de acesso baseado em perfis (ex.: **admin**, **use
 **Cadastro de Perfil:**
 ![](imagens/cadastro-usuario.png)
 
-
+---
 
 **Cadastro de Usuário:**
 ![](imagens/cadastro-usuario.png)
