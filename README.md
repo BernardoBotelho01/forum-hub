@@ -1,10 +1,12 @@
 # 📚 Forum-Hub
 
+Fórum-hub e sistema para criar e gerenciar um fórum online — ou seja, um ponto de encontro onde usuários podem postar tópicos, responder mensagens e interagir em discussões organizadas por categorias.
 Aplicação Java Spring Boot usando apenas back-end, com autenticação JWT, para gerenciamento de perfis, usuários, cursos, tópicos e respostas.  
 O sistema implementa controle de acesso baseado em perfis (ex.: **admin**, **user**) e segue arquitetura em camadas, garantindo segurança e organização no código.
 
 **O intuito do projeto é colocar em prática tudo que foi ensinado até o momento do curso, aplicando:**
 - Spring Boot
+- Spring Doc
 - Arquitetura em camadas
 - Uso de DTOs e records
 - Anotações Spring
@@ -54,6 +56,7 @@ O sistema implementa controle de acesso baseado em perfis (ex.: **admin**, **use
 - **Spring Boot**
 - **Spring Security (JWT)**
 - **Spring Data JPA**
+- **Spring Doc**
 - **PostgreSQL**
 - **Flyway Migration**
 - **Lombok**
