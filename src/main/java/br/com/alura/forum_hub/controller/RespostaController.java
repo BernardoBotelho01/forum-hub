@@ -4,6 +4,7 @@ import br.com.alura.forum_hub.dto.resposta.DadosListagemRespostaDTO;
 import br.com.alura.forum_hub.dto.resposta.DadosRespostaDTO;
 import br.com.alura.forum_hub.dto.resposta.RespostaDTO;
 import br.com.alura.forum_hub.service.RespostaService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -16,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/respostas")
+@SecurityRequirement(name = "bearer-key")
 public class RespostaController {
 
     private final RespostaService respostaService;

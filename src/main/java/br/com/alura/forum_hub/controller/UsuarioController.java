@@ -8,18 +8,16 @@ import br.com.alura.forum_hub.model.Usuario;
 import br.com.alura.forum_hub.security.DadosTokenJWT;
 import br.com.alura.forum_hub.security.TokenService;
 import br.com.alura.forum_hub.service.UsuarioService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -33,14 +31,14 @@ public class UsuarioController {
     private final TokenService tokenService;
 
     @PostMapping
-    public ResponseEntity cadastrarUsuario(@RequestBody @Valid DadosUsuarioDTO dados){
+    public ResponseEntity cadastrarUsuario(@RequestBody @Valid DadosUsuarioDTO dados) {
         var usuario = usuarioService.salvar(dados);
 
         return ResponseEntity.ok().body(new UsuarioDTO(usuario));
     }
 
     @PostMapping("/login")
-    public ResponseEntity efetuarLogin(@RequestBody @Valid DadosLoginUsuarioDTO dados){
+    public ResponseEntity efetuarLogin(@RequestBody @Valid DadosLoginUsuarioDTO dados) {
         var autenticacaoToken = new UsernamePasswordAuthenticationToken(dados.email(), dados.senha());
         var autenticacao = manager.authenticate(autenticacaoToken);
 
@@ -48,20 +46,21 @@ public class UsuarioController {
         return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
     }
 
+    @SecurityRequirement(name = "bearer-key")
     @DeleteMapping("/{id}")
-    public ResponseEntity desativarTopico(@PathVariable Long id) {
+    public ResponseEntity desativarUsuario(@PathVariable Long id) {
         usuarioService.desativar(id);
         return ResponseEntity.noContent().build();
     }
-
+    @SecurityRequirement(name = "bearer-key")
     @PutMapping("/{id}")
-    public ResponseEntity ativarTopico(@PathVariable Long id) {
+    public ResponseEntity ativarUsuario(@PathVariable Long id) {
         usuarioService.ativar(id);
         return ResponseEntity.noContent().build();
     }
-
+    @SecurityRequirement(name = "bearer-key")
     @GetMapping
-    public ResponseEntity<Page<DadosListagemUsuariosDTO>> listagemDeTopicos(@PageableDefault(size = 10, sort = {"id"}) Pageable paginacao) {
+    public ResponseEntity<Page<DadosListagemUsuariosDTO>> listagemDeUsuarios(@PageableDefault(size = 10, sort = {"id"}) Pageable paginacao) {
         return ResponseEntity.ok(usuarioService.listar(paginacao));
 
     }

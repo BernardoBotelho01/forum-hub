@@ -8,6 +8,7 @@ import br.com.alura.forum_hub.model.Topico;
 import br.com.alura.forum_hub.repository.CursoRepository;
 import br.com.alura.forum_hub.repository.UsuarioRepository;
 import br.com.alura.forum_hub.service.TopicoService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("topicos")
+@SecurityRequirement(name = "bearer-key")
 public class TopicoController {
 
     private final TopicoService topicoService;

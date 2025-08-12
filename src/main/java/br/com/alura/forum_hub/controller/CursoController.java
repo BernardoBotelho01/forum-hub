@@ -4,6 +4,7 @@ import br.com.alura.forum_hub.dto.curso.DadosCursoDTO;
 import br.com.alura.forum_hub.dto.curso.DadosListagemCursoDTO;
 import br.com.alura.forum_hub.model.Curso;
 import br.com.alura.forum_hub.service.CursoService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -16,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("cursos")
+@SecurityRequirement(name = "bearer-key")
 public class CursoController {
 
 

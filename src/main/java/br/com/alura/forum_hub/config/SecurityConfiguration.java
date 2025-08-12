@@ -44,6 +44,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.GET, "/topicos/**").authenticated()
                         .requestMatchers(HttpMethod.POST, "/respostas").authenticated()
                         .requestMatchers(HttpMethod.GET, "/respostas").authenticated()
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
 
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
