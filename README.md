@@ -1,6 +1,6 @@
 # 📚 Forum-Hub
 
-Fórum-hub e sistema para criar e gerenciar um fórum online — ou seja, um ponto de encontro onde usuários podem postar tópicos, responder mensagens e interagir em discussões organizadas por categorias.
+Fórum-hub e um sistema para criar e gerenciar um fórum online — ou seja, um ponto de encontro onde usuários podem postar tópicos, responder mensagens e interagir em discussões organizadas por categorias.
 Aplicação Java Spring Boot usando apenas back-end, com autenticação JWT, para gerenciamento de perfis, usuários, cursos, tópicos e respostas.  
 O sistema implementa controle de acesso baseado em perfis (ex.: **admin**, **user**) e segue arquitetura em camadas, garantindo segurança e organização no código.
 
